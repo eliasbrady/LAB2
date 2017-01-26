@@ -9,10 +9,10 @@ ReadFile::ReadFile(const char* file_name)
    _eof = false;
 }
 
-ReadFile:: ~ReadFile()
+ReadFile::~ReadFile()
 {
-   close(ReadFile);
-   delete ReadFile;
+   close();
+   delete this;
 }
 
 bool ReadFile::eof()
@@ -33,10 +33,9 @@ String* ReadFile::readLine()
 {
    if (closed) return NULL;
    if (_eof) return NULL;
-
+   String* str;
    string text;
-   _eof = !(getline(input_file, text));
-
+   _eof = !(getline(this->input_file, text));
    String* str = new String((const char*) text.c_str());
-   return str;
+   return str->text;
 }
