@@ -9,10 +9,9 @@ ReadFile::ReadFile(const char* file_name)
    _eof = false;
 }
 
-ReadFile:: ~ReadFile()
+ReadFile::~ReadFile()
 {
-   close(ReadFile);
-   delete ReadFile;
+   close();
 }
 
 bool ReadFile::eof()
