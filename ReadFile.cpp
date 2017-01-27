@@ -32,10 +32,7 @@ String* ReadFile::readLine()
 {
    if (closed) return NULL;
    if (_eof) return NULL;
-
    string text;
-   _eof = !(getline(input_file, text));
-
-   String* str = new String((const char*) text.c_str());
-   return str;
+   _eof = !(getline(this->input_file, text));
+   return new String((const char*) text.c_str());
 }
